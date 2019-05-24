@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+</RelativeLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context="com.example.tutorial10.MainActivity" >
+
+AIzaSyD-uVDElBsz0mIaErnA9YuXIzGZngmAgAE
+
+ 계정(FTP) 아이디	   woong232
+ 계정(FTP) 비밀번호	   yewo5544
+ DB(MySQL) 호스트	   localhost
+ DB(MySQL) 이름	   woong232
+ DB(MySQL) 사용자명	   woong232
+ DB(MySQL) 비밀번호	   dusdnd232
