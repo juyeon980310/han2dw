@@ -16,7 +16,6 @@ curs.execute(sql, (tagNum['tag_num']))
 tagFlag = curs.fetchone()
 print(tagFlag)
 
-
 sql = """insert into log_DB(tag_num,date,time)
 			values (%s, CURRENT_DATE(), CURRENT_TIME())"""
 if tagFlag is None:
@@ -28,6 +27,16 @@ sql = """insert into current(tag_num,date,time)
 if tagFlag is None:
 	curs.execute(sql, (tagNum['tag_num']))
 
-conn.commit()
+sql = """insert into current(tag_num,date,time,status)
+         values (%s, CURRENT_DATE(), CURRENT_TIME(), 0)"""
 
+if tagFlag['tag_num'] is True:
+	curs.execute(sql, (tagNum['tag_num']))
+
+sql = "delete from current where tag_num=%s"
+
+if tagFlag['tag_num'] is True:
+	curs.execute(sql,(tag_num['tag_num']))
+
+conn.commit()
 conn.close()
