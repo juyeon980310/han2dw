@@ -1,6 +1,5 @@
 import binascii
 import sys
-import os
 import time
 import pymysql
 import Adafruit_PN532 as PN532
@@ -40,16 +39,15 @@ while True:
       sql = "select tag_num from current where tag_num=%s"
       curs.execute(sql, (tagNum['tag_num']))
       tagFlag = curs.fetchone()
-
-      sql = """insert into log_DB(tag_num,date,time)
-					values (%s, CURRENT_DATE(), CURRENT_TIME())"""
                     
       if tagFlag is None:
+         sql = """insert into log_DB(tag_num,date,time)
+			         values (%s, CURRENT_DATE(), CURRENT_TIME())"""
          curs.execute(sql, (tagNum['tag_num']))
          sql = """insert into current(tag_num,date,time)
 						values (%s, CURRENT_DATE(), CURRENT_TIME())"""
          curs.execute(sql, (tagNum['tag_num']))
-         print("Flag ON")
+         print(tagNum['tag_num'], " Tag Flag ON")
 
       if tagFlag > 0:
          sql = """insert into log_DB(tag_num,date,time,status)
@@ -57,7 +55,7 @@ while True:
          curs.execute(sql, (tagNum['tag_num']))
          sql = "delete from current where tag_num=%s"
          curs.execute(sql, (tagNum['tag_num']))
-         print("Flag OFF")
+         print(tagNum['tag_num'], " Tag Flag OFF")
 
       conn.commit()
       conn.close()
