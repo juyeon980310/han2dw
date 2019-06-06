@@ -21,7 +21,7 @@ while True:
     if uid is None:
         continue
     uid_hex = format(binascii.hexlify(uid))
-    print('Found card with UID: 0x{0}'.uid_hex)
+    print('Found card with UID: 0x{0}'+uid_hex)
 
     conn = pymysql.connect(host='localhost', user='han1um', password='root',
                        db='han2um', charset='utf8')
