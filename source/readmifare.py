@@ -29,14 +29,38 @@ while True:
 
     curs.execute("select tag_id from key_table")
     tag = curs.fetchall()
+
     if {'tag_id': uid_hex} in tag:
+
 		sql = "select tag_num from key_table where tag_id=%s"
-		curs.execute(sql,uid_hex)
+		curs.execute(sql, uid_hex)
 		tagNum = curs.fetchone()
-		print(tagNum)
+
 		sql = "select tag_num from current where tag_num=%s"
 		curs.execute(sql, (tagNum['tag_num']))
 		tagFlag = curs.fetchone()
+
+        curs.execute("select * from current")
+        current = curs.fetchall()
+
+        sql = """insert into log_DB(tag_num,date,time)
+                    values (%s, CURRENT_DATE(), CURRENT_TIME())"""
+                    
+        if tagFlag is None:
+            curs.execute(sql, (tagNum['tag_num']))
+            sql = """insert into current(tag_num,date,time)
+                     values (%s, CURRENT_DATE(), CURRENT_TIME())"""
+            curs.execute(sql, (tagNum['tag_num']))
+
+        if tagFlag > 0:
+            sql = """insert into log_DB(tag_num,date,time,status)
+                      values (%s, CURRENT_DATE(), CURRENT_TIME(), 0)"""
+            curs.execute(sql, (tagNum['tag_num']))
+            sql = "delete from current where tag_num=%s"
+            curs.execute(sql, (tagNum['tag_num']))
+
+        conn.commit()
+        conn.close()
 		
     if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
                                                    [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]):
