@@ -21,7 +21,7 @@ while True:
     if uid is None:
         continue
     uid_hex = format(binascii.hexlify(uid))
-    print('Found card with UID: 0x{0}'uid_hex)
+    print('Found card with UID: 0x{0}'+uid_hex)
 
     conn = pymysql.connect(host='localhost', user='han1um', password='root',
                        db='han2um', charset='utf8')
@@ -29,12 +29,15 @@ while True:
 
     curs.execute("select tag_id from key_table")
     tag = curs.fetchall()
-
-    if uid_hex == "b'45f2c6ef'":
-        os.system('python3 ~/pythonwebapp/a.py')
-    if "{'tag_id': "+uid_hex+"}" in tag:
-        print(uid_hex + "OK")
-
+    if {'tag_id': uid_hex} in tag:
+		sql = "select tag_num from key_table where tag_id=%s"
+		curs.execute(sql,uid_hex)
+		tagNum = curs.fetchone()
+		print(tagNum)
+		sql = "select tag_num from current where tag_num=%s"
+		curs.execute(sql, (tagNum['tag_num']))
+		tagFlag = curs.fetchone()
+		
     if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
                                                    [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]):
         print('Failed to authenticate block 4!')
