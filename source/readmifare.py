@@ -23,7 +23,7 @@ while True:
     uid_hex = format(binascii.hexlify(uid))
     print('Found card with UID: 0x{0}'+uid_hex)
 
-    conn = pymysql.connect(host='localhost', user='han1um', password='root',
+    conn = pymysql.connect(host='localhost', user='han2dw', password='root',
                        db='han2um', charset='utf8')
     curs = conn.cursor(pymysql.cursors.DictCursor)
 
