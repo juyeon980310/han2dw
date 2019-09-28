@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- 생성 시간: 19-09-28 06:09
+-- 생성 시간: 19-09-28 08:41
 -- 서버 버전: 8.0.17
 -- PHP 버전: 7.3.9
 
@@ -35,7 +35,7 @@ CREATE TABLE `mobile_current` (
   `current_gcode` double NOT NULL,
   `date` date NOT NULL,
   `direction` tinytext NOT NULL,
-  `temp` varchar(30) NOT NULL
+  `temp` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -53,7 +53,7 @@ CREATE TABLE `tag_use` (
   `last_gcode` double NOT NULL,
   `direction` tinytext NOT NULL,
   `elapsed_time` time NOT NULL,
-  `temp` varchar(30) NOT NULL
+  `temp` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

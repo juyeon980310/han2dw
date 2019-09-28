@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- 생성 시간: 19-09-28 06:10
+-- 생성 시간: 19-09-28 08:41
 -- 서버 버전: 8.0.17
 -- PHP 버전: 7.3.9
 
@@ -32,7 +32,7 @@ CREATE TABLE `key_mgt` (
   `key_num` int(4) UNSIGNED ZEROFILL NOT NULL,
   `key_id` int(6) UNSIGNED ZEROFILL NOT NULL,
   `uniq_no` tinytext NOT NULL,
-  `temp` varchar(30) NOT NULL
+  `temp` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -46,7 +46,7 @@ CREATE TABLE `tag_rental` (
   `u_id` int(6) UNSIGNED ZEROFILL NOT NULL,
   `r_date` date NOT NULL,
   `b_date` date NOT NULL,
-  `temp` varchar(30) NOT NULL
+  `temp` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -84,7 +84,7 @@ ALTER TABLE `key_mgt`
 -- 테이블의 AUTO_INCREMENT `key_mgt`
 --
 ALTER TABLE `key_mgt`
-  MODIFY `key_num` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `key_num` int(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
