@@ -1,0 +1,7 @@
+#! /bin/bash
+
+value=`pgrep python3`
+if [ "$value" == "" ]
+then
+	nohup python3 /root/main.py &
+fi
