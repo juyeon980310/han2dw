@@ -1,6 +1,6 @@
 Dependencies
 =============
-* `Adafruit_CircuitPython_PN532 <https://github.com/adafruit/Adafruit_CircuitPython_PN532>`_
+* `Adafruit_CircuitPython_PN532`
 
 Raspberry Pi
 --------------------
